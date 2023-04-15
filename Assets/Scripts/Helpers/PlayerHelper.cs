@@ -14,4 +14,20 @@ public static class PlayerHelper
     {
         return Object.FindObjectOfType<Player>();
     }
+
+    public static bool IsPlayer(GameObject entity)
+    {
+        return entity == GetPlayer().gameObject;
+    }
+
+    public static PlayerController GetPlayerController()
+    {
+        GetPlayer().TryGetComponent(out PlayerController pc);
+        return pc;
+    }
+
+    public static PlayerData GetPlayerData()
+    {
+        return GetPlayerController().playerData;
+    }
 }

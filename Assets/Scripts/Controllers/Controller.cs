@@ -11,10 +11,11 @@ public class Controller : MonoBehaviour
     public InputActionReference jump_input;
 
     public Coroutine c_movement;
-    public Vector2 direction;
-    public Vector2 speed;
-    public float jump_velocity;
-    public Rigidbody2D rb;
+
+    protected Vector2 direction;
+    protected Vector2 speed;
+    protected float jump_velocity;
+    protected Rigidbody2D rb;
 
     protected void Awake()
     {
@@ -44,21 +45,8 @@ public class Controller : MonoBehaviour
         rb.MovePosition(new Vector2(x, y));
     }
 
-   /* public void Params(params string[] list)
-    {
-        Debug.Log("HERE");
-        foreach (string name in list)
-        {
-            Debug.Log(name);
-            _animatorController.TriggerAnimation(name, false);
-        }
-    }*/
-
     protected virtual void MoveInput(InputAction.CallbackContext obj)
     {
-        /*if (_isJumping)
-            return;*/
-
         if (!rb)
             return;
 
@@ -70,13 +58,7 @@ public class Controller : MonoBehaviour
         {
             while (true)
             {
-                /*while (_isJumping)
-                    yield return null;*/
-
-                /*_animatorController.TriggerAnimation("Walk");*/
-
                 direction = ControllerHelper.PrepareDirection(obj.ReadValue<Vector2>());
-                /*_animatorController.FlipSprite(obj.ReadValue<Vector2>());*/
 
                 yield return null;
             }
@@ -85,24 +67,42 @@ public class Controller : MonoBehaviour
 
     protected virtual void MoveCanceled(InputAction.CallbackContext obj)
     {
-        /*if (_isJumping)
-            return;*/
-
         if (c_movement == null)
             return;
 
         StopCoroutine(c_movement);
         c_movement = null;
         direction = ControllerHelper.PrepareDirection(Vector2.zero);
-
-        /*_animatorController.TriggerAnimation("Walk", false);
-        _animatorController.TriggerAnimation("Idle");*/
     }
 
     protected void JumpInput(InputAction.CallbackContext obj)
     {
         Debug.Log("jump");
-        /*rb.AddForce(Vector2.up * jump_velocity, ForceMode2D.Impulse);*/
         rb.velocity = new Vector2(rb.velocity.x, jump_velocity);
+    }
+
+    public Vector2 GetSpeed()
+    {
+        return speed;
+    }
+
+    public void SetSpeed(Vector2 newValue)
+    {
+        speed = newValue;
+    }
+
+    public Vector2 GetDirection()
+    {
+        return direction;
+    }
+
+    public void SetDirection(Vector2 newValue)
+    {
+        direction = newValue;
+    }
+
+    public Rigidbody2D GetRigidbody()
+    {
+        return rb;
     }
 }
