@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score_given: 1
+  speed_given: 1
 --- !u!212 &-7801810659035386093
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114,4 +115,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 0.5
