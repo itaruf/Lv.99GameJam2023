@@ -42,7 +42,7 @@ public partial class @PlayerInputsMap : IInputActionCollection2, IDisposable
                     ""id"": ""6d51c353-f909-4e8a-abd4-5218ae0ee1d4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=1)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -128,7 +128,7 @@ public partial class @PlayerInputsMap : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""b6afc620-7354-4480-b416-507afe846f61"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=1)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",

@@ -8,4 +8,14 @@ public static class ManagerHelper
     {
         return Object.FindObjectOfType<GameManager>();
     }
+
+    public static WindManager GetWindManager()
+    {
+        return GetGameManager().windManager;
+    }
+
+    public static ScoreManager GetScoreManager()
+    {
+        return GetGameManager().scoreManager;
+    }
 }

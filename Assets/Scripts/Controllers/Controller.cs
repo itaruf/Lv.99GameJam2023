@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Controller : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class Controller : MonoBehaviour
     public InputActionReference jump_input;
 
     public Coroutine c_movement;
+    public Coroutine c_jump;
 
     protected Vector2 direction;
     protected Vector2 speed;
@@ -21,17 +24,19 @@ public class Controller : MonoBehaviour
     {
         // Movement
         move_input.action.started += MoveInput;
-        move_input.action.canceled += MoveCanceled;
+        move_input.action.canceled += MoveInputCanceled;
 
-        jump_input.action.started += JumpInput;
+        /*jump_input.action.performed += JumpInput;
+        jump_input.action.canceled += JumpInputCanceled;*/
     }
+
 
     protected void OnDestroy()
     {
         move_input.action.started -= MoveInput;
-        move_input.action.canceled -= MoveCanceled;
+        move_input.action.canceled -= MoveInputCanceled;
 
-        jump_input.action.started -= JumpInput;
+        /*jump_input.action.performed -= JumpInput;*/
     }
 
     protected void FixedUpdate()
@@ -65,7 +70,7 @@ public class Controller : MonoBehaviour
         }
     }
 
-    protected virtual void MoveCanceled(InputAction.CallbackContext obj)
+    protected virtual void MoveInputCanceled(InputAction.CallbackContext obj)
     {
         if (c_movement == null)
             return;
@@ -77,8 +82,37 @@ public class Controller : MonoBehaviour
 
     protected void JumpInput(InputAction.CallbackContext obj)
     {
+        if (c_jump == null)
+            return;
+
+        StopCoroutine(c_jump);
+        c_jump = null;
+
         Debug.Log("jump");
         rb.velocity = new Vector2(rb.velocity.x, jump_velocity);
+    }
+
+    private void JumpInputCanceled(InputAction.CallbackContext obj)
+    {
+        if (c_jump != null)
+            return;
+
+        float hold_duration = Mathf.Clamp((float) obj.duration, 0, 1);
+        Debug.Log(hold_duration);
+
+        Vector2 vector2 = new Vector2(0, hold_duration * 100);
+        GameObject player = PlayerHelper.GetPlayer().gameObject;
+
+        c_jump = StartCoroutine(JumpTrackingRoutine());
+        IEnumerator JumpTrackingRoutine()
+        {
+            while (true)
+            {
+                EntityHelper.GetEntityRigidbody(player).AddForce(EntityHelper.GetForwardDirection(player) * vector2 * (float)hold_duration * Time.fixedDeltaTime, ForceMode2D.Impulse);
+
+                yield return null;
+            }
+        }
     }
 
     public Vector2 GetSpeed()
@@ -104,5 +138,11 @@ public class Controller : MonoBehaviour
     public Rigidbody2D GetRigidbody()
     {
         return rb;
+    }
+
+    public void ModifySpeed(Vector2 newVector2)
+    {
+        speed.x = Mathf.Clamp((speed + newVector2).x, PlayerHelper.GetPlayerData().PLAYER_MIN_SPEED, PlayerHelper.GetPlayerData().PLAYER_MAX_SPEED);
+        speed.y = Mathf.Clamp((speed + newVector2).y, PlayerHelper.GetPlayerData().PLAYER_MIN_SPEED, PlayerHelper.GetPlayerData().PLAYER_MAX_SPEED);
     }
 }

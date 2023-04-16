@@ -9,8 +9,8 @@ public class Wind : MonoBehaviour
     public GameObject direction;
     public Vector2 force;
 
-    public Delegate<GameObject>.D2 onEntityEnter;
-    public Delegate<GameObject>.D2 onEntityExit;
+    public Delegate.D2 onEntityEnter;
+    public Delegate.D2 onEntityExit;
 
     Coroutine c_push;
 
@@ -24,7 +24,7 @@ public class Wind : MonoBehaviour
         onEntityEnter += StartPushEntity;
         onEntityExit += StopPushEntity;
 
-        ManagerHelper.GetGameManager().onPlayerEnterWind += StopPushEntity;
+        ManagerHelper.GetWindManager().onPlayerEnterWind += StopPushEntity;
     }
 
     public void StartPushEntity(GameObject entity)
@@ -69,7 +69,7 @@ public class Wind : MonoBehaviour
             // Player isn't in a wind anymore
             StopCoroutine(c_push);
             c_push = null;
-            ManagerHelper.GetGameManager().currentWind = null;
+            ManagerHelper.GetWindManager().currentWind = null;
             player_controller.SetIsInWind(false);
 
             //WindPulse(entity);
@@ -83,7 +83,7 @@ public class Wind : MonoBehaviour
         GameObject entity = collision.gameObject;
         if (entity == PlayerHelper.GetPlayer().gameObject)
         {
-            ManagerHelper.GetGameManager().currentWind = this;
+            ManagerHelper.GetWindManager().currentWind = this;
             onEntityEnter?.Invoke(entity);
         }
     }
