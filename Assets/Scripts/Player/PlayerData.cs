@@ -11,4 +11,7 @@ public class PlayerData : ScriptableObject
 
     public float PLAYER_GRAVITY_IN_WIND = 0f;
     public float PLAYER_GRAVITY = 10f;
+
+    public float PLAYER_MIN_SPEED = 1;
+    public float PLAYER_MAX_SPEED = 3;
 }

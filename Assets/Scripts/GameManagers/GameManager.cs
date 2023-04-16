@@ -6,26 +6,30 @@ public class GameManager : MonoBehaviour
 {
     public Player player { get; private set; }
 
-    public Wind currentWind { get; set; }
-
-    public Delegate<GameObject>.D2 onPlayerEnterWind;
-
-
+    public WindManager windManager;
+    public ScoreManager scoreManager;
 
     void Awake()
     {
         if (!player)
             player = FindObjectOfType<Player>();
+
+        if (!windManager)
+            TryGetComponent(out windManager);
+
+        if (!scoreManager)
+            TryGetComponent(out scoreManager);
     }
 
     void Start()
     {
         if (!player)
             player = FindObjectOfType<Player>();
-    }
 
-    void Update()
-    {
-        
+        if (!windManager)
+            TryGetComponent(out windManager);
+
+        if (!scoreManager)
+            TryGetComponent(out scoreManager);
     }
 }

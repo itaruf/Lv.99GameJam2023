@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    CircleCollider2D collectCollider;
+    public CircleCollider2D collectCollider;
 
     void Awake()
     {
         if (!collectCollider)
             TryGetComponent(out collectCollider);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ScoreManager scoreManager = ManagerHelper.GetScoreManager();
+        if (scoreManager)
+        {
+            /*scoreManager.onPlayerScore += () => { PlayerHelper.GetPlayerController().ModifySpeed(new Vector2(1, 1)); }; */
+            scoreManager.onScoreChange += scoreManager.SetScore;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out ICollectable collectable))
+        if (collision.TryGetComponent(out Collectable collectable))
         {
-            collectable.Collect();
+            (collectable as ICollectable).Collect();
+
+            ScoreManager scoreManager = ManagerHelper.GetScoreManager();
+            if (scoreManager)
+            {
+                /*scoreManager.onPlayerScore?.Invoke();*/
+                scoreManager.onScoreChange?.Invoke(collectable.score_given);
+                PlayerHelper.GetPlayerController().ModifySpeed(new Vector2(collectable.speed_given, collectable.speed_given));
+            }
         }
     }
 }
