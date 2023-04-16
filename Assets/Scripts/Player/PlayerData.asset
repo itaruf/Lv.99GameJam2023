@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa3aac9ee4306c4bb7c3c16e616e766, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  PLAYER_SPEED: {x: 2, y: 2}
+  PLAYER_JUMP_VELOCITY: {x: 2, y: 2}
+  PLAYER_GRAVITY_IN_WIND: 0
+  PLAYER_GRAVITY: 0

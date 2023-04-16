@@ -30,4 +30,10 @@ public static class PlayerHelper
     {
         return GetPlayerController().playerData;
     }
+
+    public static CircleCollider2D GetPlayerCollectCollider()
+    {
+        GetPlayer().TryGetComponent(out CircleCollider2D cc2D);
+        return cc2D;
+    }
 }
