@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable
       objectReference: {fileID: 0}
+    - target: {fileID: 7235047414875783874, guid: a6374d068ce412444bab727e2cab3f13, type: 3}
+      propertyPath: speed_given
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6374d068ce412444bab727e2cab3f13, type: 3}
 --- !u!1001 &1526007106
