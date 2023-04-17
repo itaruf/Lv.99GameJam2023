@@ -18,4 +18,9 @@ public static class ManagerHelper
     {
         return GetGameManager().scoreManager;
     }
+
+    public static Vector2 GetGlobalWindForce()
+    {
+        return GetWindManager().GetGlobalWindForce();
+    }
 }

@@ -73,4 +73,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c42c0fe9d16bbe4e8f46fa18290c819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: {x: 0, y: 100}
+  globalWindData: {fileID: 11400000, guid: da054ba850d21b243935722c9b03a65b, type: 2}

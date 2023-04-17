@@ -7,11 +7,11 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [SerializeField] public Vector2 player_speed = new Vector2(2f, 2f);
-    [SerializeField] public Vector2 player_jump_velocity = new Vector2(2f, 2f);
+    [HideInInspector] [SerializeField] public Vector2 player_jump_velocity = new Vector2(2f, 2f);
 
     [SerializeField] public float player_gravity_in_wind = 0f;
     [SerializeField] public float player_gravity = 10f;
 
-    [SerializeField] public float player_min_speed = 1;
-    [SerializeField] public float player_max_speed = 3;
+    [SerializeField] public Vector2 player_min_speed = new Vector2(2f, 2f);
+    [SerializeField] public Vector2 player_max_speed = new Vector2(2f, 2f);
 }

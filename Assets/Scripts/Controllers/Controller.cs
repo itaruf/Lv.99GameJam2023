@@ -17,8 +17,14 @@ public class Controller : MonoBehaviour
 
     protected Vector2 direction;
     protected Vector2 speed;
+    protected Vector2 base_speed;
     protected float jump_velocity;
     protected Rigidbody2D rb;
+
+    public Delegate.D3 onStartSuperSpeed;
+    public Delegate.D3 onStopSuperSpeed;
+
+    protected bool isSuperBoostOn = false;
 
     protected void Awake()
     {
@@ -140,12 +146,8 @@ public class Controller : MonoBehaviour
         return rb;
     }
 
-    public void ModifySpeed(Vector2 newVector2)
+    public Vector2 GetBaseSpeed()
     {
-        Vector2 v;
-        v.x = Mathf.Clamp((speed + newVector2).x, PlayerHelper.GetPlayerData().player_min_speed, PlayerHelper.GetPlayerData().player_max_speed);
-        v.y = Mathf.Clamp((speed + newVector2).y, PlayerHelper.GetPlayerData().player_min_speed, PlayerHelper.GetPlayerData().player_max_speed);
-
-        speed = v;
+        return base_speed;
     }
 }

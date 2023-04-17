@@ -46,4 +46,9 @@ public static class PlayerHelper
     {
         return GetPlayerController().GetSpeed();
     }
+
+    public static Vector2 GetPlayerBaseSpeed()
+    {
+        return GetPlayerController().GetBaseSpeed();
+    }
 }

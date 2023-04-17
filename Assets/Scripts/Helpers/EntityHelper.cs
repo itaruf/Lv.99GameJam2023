@@ -72,4 +72,16 @@ public static class EntityHelper
     {
         GetCollider2D(entity).enabled = newBool;
     }
+
+    public static void SetActive(Renderer renderer, bool newBool)
+    {
+        if (renderer)
+            renderer.enabled = newBool;
+    }
+
+    public static void SetActive(Behaviour behaviour, bool newBool)
+    {
+        if (behaviour)
+            behaviour.enabled = newBool;
+    }
 }
