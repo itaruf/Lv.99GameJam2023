@@ -6,12 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/PlayerData", order = 1)]
 public class PlayerData : ScriptableObject
 {
-    public Vector2 PLAYER_SPEED = new Vector2(2f, 2f);
-    public Vector2 PLAYER_JUMP_VELOCITY = new Vector2(2f, 2f);
+    [SerializeField] public Vector2 player_speed = new Vector2(2f, 2f);
+    [SerializeField] public Vector2 player_jump_velocity = new Vector2(2f, 2f);
 
-    public float PLAYER_GRAVITY_IN_WIND = 0f;
-    public float PLAYER_GRAVITY = 10f;
+    [SerializeField] public float player_gravity_in_wind = 0f;
+    [SerializeField] public float player_gravity = 10f;
 
-    public float PLAYER_MIN_SPEED = 1;
-    public float PLAYER_MAX_SPEED = 3;
+    [SerializeField] public float player_min_speed = 1;
+    [SerializeField] public float player_max_speed = 3;
 }

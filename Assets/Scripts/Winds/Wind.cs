@@ -39,7 +39,7 @@ public class Wind : MonoBehaviour
             {
                 while (true)
                 {                  
-                    EntityHelper.SetGravity(entity, PlayerHelper.GetPlayerData().PLAYER_GRAVITY_IN_WIND);
+                    EntityHelper.SetGravity(entity, PlayerHelper.GetPlayerData().player_gravity_in_wind);
                     EntityHelper.GetEntityRigidbody(entity).AddForce(EntityHelper.GetForwardDirection(direction) * force * EntityHelper.GetSpeed(entity) * Time.fixedDeltaTime);
 
                     yield return null;
@@ -73,7 +73,7 @@ public class Wind : MonoBehaviour
             player_controller.SetIsInWind(false);
 
             //WindPulse(entity);
-            EntityHelper.SetGravity(entity, PlayerHelper.GetPlayerData().PLAYER_GRAVITY);
+            EntityHelper.SetGravity(entity, PlayerHelper.GetPlayerData().player_gravity);
         }
     }
    

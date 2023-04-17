@@ -142,7 +142,10 @@ public class Controller : MonoBehaviour
 
     public void ModifySpeed(Vector2 newVector2)
     {
-        speed.x = Mathf.Clamp((speed + newVector2).x, PlayerHelper.GetPlayerData().PLAYER_MIN_SPEED, PlayerHelper.GetPlayerData().PLAYER_MAX_SPEED);
-        speed.y = Mathf.Clamp((speed + newVector2).y, PlayerHelper.GetPlayerData().PLAYER_MIN_SPEED, PlayerHelper.GetPlayerData().PLAYER_MAX_SPEED);
+        Vector2 v;
+        v.x = Mathf.Clamp((speed + newVector2).x, PlayerHelper.GetPlayerData().player_min_speed, PlayerHelper.GetPlayerData().player_max_speed);
+        v.y = Mathf.Clamp((speed + newVector2).y, PlayerHelper.GetPlayerData().player_min_speed, PlayerHelper.GetPlayerData().player_max_speed);
+
+        speed = v;
     }
 }

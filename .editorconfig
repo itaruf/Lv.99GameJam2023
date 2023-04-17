@@ -1,0 +1,7 @@
+﻿[*.{cs,vb}]
+
+# IDE0040: Ajouter des modificateurs d'accessibilité
+dotnet_diagnostic.IDE0040.severity = silent
+
+# IDE0040: Ajouter des modificateurs d'accessibilité
+dotnet_style_require_accessibility_modifiers = never

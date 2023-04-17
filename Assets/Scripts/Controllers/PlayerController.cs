@@ -17,10 +17,10 @@ public class PlayerController : Controller
     {
         base.Awake();
 
-        speed = playerData.PLAYER_SPEED;
+        speed = playerData.player_speed;
 
         rb = PlayerHelper.GetPlayerRigidBody();
-        EntityHelper.SetGravity(gameObject, playerData.PLAYER_GRAVITY);
+        EntityHelper.SetGravity(gameObject, playerData.player_gravity);
     }
 
     void Start()

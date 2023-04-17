@@ -61,4 +61,15 @@ public static class EntityHelper
         entity.TryGetComponent(out BoxCollider2D boxCollider2D);
         return boxCollider2D;
     }
+
+    public static Collider2D GetCollider2D(GameObject entity)
+    {
+        entity.TryGetComponent(out Collider2D collider2D);
+        return collider2D;
+    }
+
+    public static void SetActiveCollider2D(GameObject entity, bool newBool)
+    {
+        GetCollider2D(entity).enabled = newBool;
+    }
 }
