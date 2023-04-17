@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d79e6151d8a02e49be759fed7406487, type: 3}
-  m_Name: CollectableData 2
+  m_Script: {fileID: 11500000, guid: 657017759c640994bb4ca30e546f7616, type: 3}
+  m_Name: WindData
   m_EditorClassIdentifier: 
-  collectable_score_given: 1
-  collectable_speed_given: {x: 5, y: 5}
-  collectable_speed: {x: 2, y: 2}
-  collectable_follow_duration: 10
+  wind_force: {x: 0, y: 150}

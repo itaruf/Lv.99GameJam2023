@@ -51,8 +51,6 @@ public class Collectable : MonoBehaviour, ICollectable
                 yield return null;
             }
 
-            Debug.Log("stop following");
-
             (this as ICollectable).StopFollowPlayer();
         }
     }

@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
+    [SerializeField] WindData windData;
     public GameObject direction;
-    public Vector2 force;
+    
+    Vector2 force;
 
     public Delegate.D2 onEntityEnter;
     public Delegate.D2 onEntityExit;
@@ -16,6 +18,9 @@ public class Wind : MonoBehaviour
 
     void Awake()
     {
+        if (windData)
+            force = windData.wind_force;
+
         if (!direction)
         {
             direction = transform.GetChild(0).gameObject;

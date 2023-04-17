@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4cfde49d7f19964d87cff492f3e79cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  windData: {fileID: 11400000, guid: da054ba850d21b243935722c9b03a65b, type: 2}
   direction: {fileID: 0}
-  force: {x: 300, y: 300}
 --- !u!212 &2015202138
 SpriteRenderer:
   m_ObjectHideFlags: 0
