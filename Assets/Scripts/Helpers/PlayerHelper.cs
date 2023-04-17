@@ -36,4 +36,14 @@ public static class PlayerHelper
         GetPlayer().TryGetComponent(out CircleCollider2D cc2D);
         return cc2D;
     }
+
+    public static Vector3 GetPlayerPosition()
+    {
+        return GetPlayer().transform.position;
+    }
+
+    public static Vector2 GetPlayerSpeed()
+    {
+        return GetPlayerController().GetSpeed();
+    }
 }

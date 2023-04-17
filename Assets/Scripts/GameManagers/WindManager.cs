@@ -9,15 +9,4 @@ public class WindManager : MonoBehaviour
     public Delegate.D2 onPlayerEnterWind;
 
     public Wind currentWind { get; set; }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

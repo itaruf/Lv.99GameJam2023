@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa3aac9ee4306c4bb7c3c16e616e766, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 7d79e6151d8a02e49be759fed7406487, type: 3}
+  m_Name: CollectableData
   m_EditorClassIdentifier: 
-  player_speed: {x: 2, y: 2}
-  player_jump_velocity: {x: 2, y: 2}
-  player_gravity_in_wind: 0
-  player_gravity: 0
-  player_min_speed: 1
-  player_max_speed: 6
+  collectable_score_given: 1
+  collectable_speed_given: {x: 1, y: 1}
+  collectable_speed: {x: 2, y: 2}
+  collectable_follow_duration: 10

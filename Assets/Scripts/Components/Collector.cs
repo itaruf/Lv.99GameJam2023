@@ -23,14 +23,15 @@ public class Collector : MonoBehaviour
     {
         if (collision.TryGetComponent(out Collectable collectable))
         {
-            (collectable as ICollectable).Collect();
+            ICollectable icollectable = collectable;
+            icollectable.Collect();
 
             ScoreManager scoreManager = ManagerHelper.GetScoreManager();
             if (scoreManager)
             {
                 /*scoreManager.onPlayerScore?.Invoke();*/
-                scoreManager.onScoreChange?.Invoke(collectable.score_given);
-                PlayerHelper.GetPlayerController().ModifySpeed(new Vector2(collectable.speed_given, collectable.speed_given));
+                scoreManager.onScoreChange?.Invoke(icollectable.GetScoreGiven());
+                PlayerHelper.GetPlayerController().ModifySpeed(icollectable.GetSpeedGiven());
             }
         }
     }
