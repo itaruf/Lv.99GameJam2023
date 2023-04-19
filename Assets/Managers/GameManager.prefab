@@ -93,8 +93,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   season_map:
-    keys: 
-    values: []
+    keys: 00000000010000000200000003000000
+    values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!114 &1075643122
 MonoBehaviour:
   m_ObjectHideFlags: 0
