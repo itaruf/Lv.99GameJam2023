@@ -50,7 +50,7 @@ public class Controller : MonoBehaviour
         if (!rb)
             return;
 
-        float x = rb.position.x + (direction.x * speed.x) * Time.fixedDeltaTime;
+        float x = rb.position.x + (direction.x * speed.x) * Time.deltaTime;
         float y = rb.position.y;
 
         rb.MovePosition(new Vector2(x, y));
@@ -114,7 +114,7 @@ public class Controller : MonoBehaviour
         {
             while (true)
             {
-                EntityHelper.GetEntityRigidbody(player).AddForce(EntityHelper.GetForwardDirection(player) * vector2 * (float)hold_duration * Time.fixedDeltaTime, ForceMode2D.Impulse);
+                EntityHelper.GetEntityRigidbody(player).AddForce(EntityHelper.GetForwardDirection(player) * vector2 * (float)hold_duration * Time.deltaTime, ForceMode2D.Impulse);
 
                 yield return null;
             }

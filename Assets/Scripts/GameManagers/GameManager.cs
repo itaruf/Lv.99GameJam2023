@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public WindManager windManager;
     public ScoreManager scoreManager;
+    public BackgroundManager backgroundManager;
+    public SpawnManager spawnManager;
+    public SeasonManager seasonManager;
 
     void Awake()
     {
@@ -19,6 +22,15 @@ public class GameManager : MonoBehaviour
 
         if (!scoreManager)
             TryGetComponent(out scoreManager);
+
+        if (!backgroundManager)
+            TryGetComponent(out backgroundManager);
+
+        if (!spawnManager)
+            TryGetComponent(out spawnManager);
+
+        if (!seasonManager)
+            TryGetComponent(out seasonManager);
     }
 
     void Start()
@@ -31,5 +43,14 @@ public class GameManager : MonoBehaviour
 
         if (!scoreManager)
             TryGetComponent(out scoreManager);
+
+        if (!backgroundManager)
+            TryGetComponent(out backgroundManager);
+
+        if (!spawnManager)
+            TryGetComponent(out spawnManager);
+
+        if (!seasonManager)
+            TryGetComponent(out seasonManager);
     }
 }

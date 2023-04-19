@@ -59,7 +59,7 @@ public class PlayerController : Controller
         {
             while (true)
             {
-                rb.AddForce(EntityHelper.GetForwardDirection(gameObject) * ManagerHelper.GetGlobalWindForce() * speed * Time.fixedDeltaTime);
+                rb.AddForce(EntityHelper.GetForwardDirection(gameObject) * ManagerHelper.GetGlobalWindForce() * speed * Time.deltaTime);
                 yield return null;
             }
         }

@@ -48,7 +48,7 @@ public class Collectable : MonoBehaviour, ICollectable
                 current_time -= Time.deltaTime;
                 transform.position = Vector3.Slerp(transform.position, new Vector3(PlayerHelper.GetPlayerPosition().x + x_offset, PlayerHelper.GetPlayerPosition().y - y_offset), PlayerHelper.GetPlayerSpeed().x * Time.deltaTime);
 
-                yield return null;
+                yield return new WaitForEndOfFrame();
             }
 
             (this as ICollectable).StopFollowPlayer();
