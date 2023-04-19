@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SeasonManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Delegate.D5 onSeasonChange;
+
     void Start()
     {
         

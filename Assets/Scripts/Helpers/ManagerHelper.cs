@@ -23,4 +23,19 @@ public static class ManagerHelper
     {
         return GetWindManager().GetGlobalWindForce();
     }
+
+    public static SeasonManager GetSeasonManager()
+    {
+        return GetGameManager().seasonManager;
+    }
+
+    public static BackgroundManager GetBackgroundManager()
+    {
+        return GetGameManager().backgroundManager;
+    }
+
+    public static SpawnManager GetSpawnManager()
+    {
+        return GetGameManager().spawnManager;
+    }
 }

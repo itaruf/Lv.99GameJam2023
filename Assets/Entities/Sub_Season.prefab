@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6839757078184330192}
   - component: {fileID: 2660795652651945731}
   m_Layer: 6
-  m_Name: BG_Sub_Season
+  m_Name: Sub_Season
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

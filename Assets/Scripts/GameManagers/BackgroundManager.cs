@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-    KeyValuePair<ESeasons, Season> current_background;
+    KeyValuePair<ESeasons, Season> current_season;
 
     [UDictionary.Split(30, 70)]
-    public BackgroundDictionary backgrounds_map;
+    public BackgroundDictionary season_map;
 
     [Serializable] public class BackgroundDictionary : UDictionary<ESeasons, Season> { }
     [Serializable] public class Key { public ESeasons e_season; }
@@ -18,26 +18,28 @@ public class BackgroundManager : MonoBehaviour
     int inc = 0;
 
     void Awake()
-
     {
-        int nb_backgrounds_renderer = backgrounds_map.Count;
+        int nb_season = season_map.Count;
         
-        if (nb_backgrounds_renderer > 0)
+        if (nb_season > 0)
         {
-            current_background = backgrounds_map.ElementAt(0);
-            foreach (Background season_background in current_background.Value.backgrounds)
+            current_season = season_map.ElementAt(0);
+            foreach (Background season_background in current_season.Value.backgrounds)
             {
                 EnableBackground(season_background);
             }
         }
 
-        for (int i = 1; i < nb_backgrounds_renderer; ++i)
+        for (int i = 1; i < nb_season; ++i)
         {
-            foreach (Background season_background in backgrounds_map.ElementAt(i).Value.backgrounds)
+            foreach (Background season_background in season_map.ElementAt(i).Value.backgrounds)
             {
                 DisableBackground(season_background);
             }
         }
+
+        SeasonManager season_manager = ManagerHelper.GetSeasonManager();
+        season_manager.onSeasonChange += SetBackground;
     }
 
     private void Update()
@@ -51,12 +53,12 @@ public class BackgroundManager : MonoBehaviour
 
     void SetBackground(int index)
     {
-        if (index < 0 || index > backgrounds_map.Count - 1)
+        if (index < 0 || index > season_map.Count - 1)
             return;
 
-        KeyValuePair<ESeasons, Season> selected_background = backgrounds_map.ElementAt(index);
+        KeyValuePair<ESeasons, Season> selected_background = season_map.ElementAt(index);
 
-        if (selected_background.Key == current_background.Key)
+        if (selected_background.Key == current_season.Key)
             return;
 
         foreach(Background season in selected_background.Value.backgrounds)
@@ -64,7 +66,7 @@ public class BackgroundManager : MonoBehaviour
             DisableBackground(season);
         }
 
-        current_background = selected_background;
+        current_season = selected_background;
 
         foreach (Background season in selected_background.Value.backgrounds)
         {
@@ -74,9 +76,9 @@ public class BackgroundManager : MonoBehaviour
 
     void SetBackground(ESeasons e_season)
     {
-        KeyValuePair<ESeasons, Season> selected_background = new KeyValuePair<ESeasons, Season>(e_season, backgrounds_map[e_season]);
+        KeyValuePair<ESeasons, Season> selected_background = new KeyValuePair<ESeasons, Season>(e_season, season_map[e_season]);
 
-        if (selected_background.Key == current_background.Key)
+        if (selected_background.Key == current_season.Key)
             return;
 
         foreach (Background season in selected_background.Value.backgrounds)
@@ -84,7 +86,7 @@ public class BackgroundManager : MonoBehaviour
             DisableBackground(season);
         }
 
-        current_background = selected_background;
+        current_season = selected_background;
 
         foreach (Background season in selected_background.Value.backgrounds)
         {

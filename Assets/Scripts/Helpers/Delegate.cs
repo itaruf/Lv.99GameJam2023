@@ -8,4 +8,6 @@ public class Delegate
 
     public delegate void D4(int value);
     public delegate void D3();
+
+    public delegate void D5(ESeasons e_season);
 }
