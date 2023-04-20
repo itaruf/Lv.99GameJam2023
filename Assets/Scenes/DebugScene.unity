@@ -390,11 +390,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: spawnables.keys.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: spawnables.values.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: spawnables.keys.Array.data[1]
@@ -599,6 +599,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1091114413}
     m_Modifications:
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.keys.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.data[0].nbMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.data[0].entity
+      value: 
+      objectReference: {fileID: 11400000, guid: 467b1d473f4a5404f8e05d8a8137e272, type: 2}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.data[0].delayBeforeNextSpawn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.data[0].frequencyOfApparition
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2797563917810888198, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1109,6 +1133,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1091114413}
     m_Modifications:
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.keys.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.data[0].nbMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.data[0].entity
+      value: 
+      objectReference: {fileID: 11400000, guid: b7aa9be0d71f7d04eada5bbd7327f3e9, type: 2}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.data[0].delayBeforeNextSpawn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: spawnables.values.Array.data[0].frequencyOfApparition
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2797563917810888198, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: m_RootOrder
       value: 2
