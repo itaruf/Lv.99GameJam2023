@@ -7,8 +7,6 @@ public class WindManager : MonoBehaviour
     [SerializeField] WindData globalWindData;
     Vector2 force;
 
-    public Delegate.D2 onPlayerEnterWind;
-
     public Wind currentWind { get; set; }
 
     void Awake()

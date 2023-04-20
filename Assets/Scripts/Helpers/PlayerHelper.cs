@@ -42,6 +42,11 @@ public static class PlayerHelper
         return GetPlayer().transform.position;
     }
 
+    public static void SetPlayerPosition(Vector3 newPosition)
+    {
+        GetPlayer().transform.position = newPosition;
+    }
+
     public static Vector2 GetPlayerSpeed()
     {
         return GetPlayerController().GetSpeed();

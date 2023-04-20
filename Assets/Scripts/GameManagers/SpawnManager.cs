@@ -7,6 +7,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public Vector2 playerStartPosition;
+    public float yOffsetFromPlayerToDestroyEntity;
 
     KeyValuePair<ESeasons, Spawner> current_spawner;
 
@@ -19,9 +20,13 @@ public class SpawnManager : MonoBehaviour
 
     void Awake()
     {
-
-        SeasonManager season_manager = ManagerHelper.GetSeasonManager();
-        season_manager.onSeasonChange += UpdateSpawner;
+        int nb_spawner = spawners_map.Count;
+        if (nb_spawner > 0)
+        {
+            current_spawner = spawners_map.ElementAt(0);
+            SeasonManager season_manager = ManagerHelper.GetSeasonManager();
+            season_manager.onSeasonChange += UpdateSpawner;
+        }
     }
 
     void UpdateSpawner(ESeasons e_season)
@@ -32,7 +37,18 @@ public class SpawnManager : MonoBehaviour
             return;
 
         current_spawner.Value.StopSpawn();
-        current_spawner = selected_season;
-        current_spawner.Value.StartSpawn();
+        if (current_spawner.Value)
+        {
+            current_spawner = selected_season;
+            if (current_spawner.Value)
+            {
+                current_spawner.Value.StartSpawn();
+            }
+        }
+    }
+
+    public float GetYOffsetFromPlayerToDestroyEntity()
+    {
+        return yOffsetFromPlayerToDestroyEntity;
     }
 }

@@ -10,6 +10,11 @@ public class Point : MonoBehaviour
 
     void Awake()
     {
+        if (TryGetComponent(out SpriteRenderer spriteRenderer))
+        {
+            EntityHelper.SetActive(spriteRenderer, false);
+        }
+
         // On change background   
         // += StopOccupationDelay();
     }
@@ -43,5 +48,25 @@ public class Point : MonoBehaviour
 
         StopCoroutine(c_occupation);
         c_occupation = null;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision as ISpawnable != null)
+        {
+            isOccupied = true;
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision as ISpawnable != null)
+        {
+            isOccupied = true;
+        }
+        else
+        {
+            isOccupied = false;
+        }
     }
 }

@@ -2,35 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour, ICollectable
+public class Collectable : Entity, ICollectable, ISpawnable
 {
     [SerializeField] CollectableData collectableData;
 
+    GameObject collectable_entity;
     int collectable_score_given;
     Vector2 collectable_speed_given;
     Vector2 collectable_speed;
     float collectable_follow_duration;
 
+    ISpawnable iSpawnable;
+    ICollectable iCollectable;
+
     Coroutine c_follow;
+    Coroutine c_delete;
 
     void Awake()
     {
         if (collectableData)
         {
+            collectable_entity = collectableData.entity;
             collectable_score_given = collectableData.collectable_score_given;
             collectable_speed_given = collectableData.collectable_speed_given;
             collectable_speed = collectableData.collectable_speed;
             collectable_follow_duration = collectableData.collectable_follow_duration;
         }
+
+        iSpawnable = this as ISpawnable;
+        iCollectable = this as ICollectable;
+
+        ManagerHelper.GetSeasonManager().onSeasonChange += (ESeasons eason) => { iSpawnable.DeleteEntity(); };
+
+        iSpawnable.DeleteEntityBelowPlayer();
+    }
+
+    private void OnDestroy()
+    {
+        if (c_delete != null)
+        {
+            StopCoroutine(c_delete);
+            c_delete = null;
+        }
+
+        if (c_follow != null)
+        {
+            StopCoroutine(c_follow);
+            c_follow = null;
+        }
     }
 
     void ICollectable.Collect()
     {
-        ICollectable icollectable = this;
         EntityHelper.SetActiveCollider2D(gameObject, false);
 
         if (collectableData)
-            icollectable.StartFollowPlayer();
+            iCollectable.StartFollowPlayer();
     }
 
     void ICollectable.StartFollowPlayer()
@@ -57,8 +84,11 @@ public class Collectable : MonoBehaviour, ICollectable
 
     void ICollectable.StopFollowPlayer()
     {
-        StopCoroutine(c_follow);
-        c_follow = null;
+        if (c_follow != null)
+        {
+            StopCoroutine(c_follow);
+            c_follow = null;
+        }
 
         Destroy(gameObject);
     }
@@ -101,5 +131,30 @@ public class Collectable : MonoBehaviour, ICollectable
     void ICollectable.SetSpeedGiven(Vector2 newValue)
     {
         throw new System.NotImplementedException();
+    }
+
+    void ISpawnable.DeleteEntityBelowPlayer()
+    {
+        if (c_delete != null)
+            return;
+
+        c_delete = StartCoroutine(DeleteEntityBelowPlayerTracking());
+        IEnumerator DeleteEntityBelowPlayerTracking()
+        {
+            while (true)
+            {
+                if (MathsHelper.CompareFloat(EntityHelper.GetPosition(gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.LOWER))
+                {
+                    Destroy(gameObject);
+                }
+                yield return null;
+            }
+        }
+    }
+
+    void ISpawnable.DeleteEntity()
+    {
+        if (this)
+            Destroy(gameObject);
     }
 }

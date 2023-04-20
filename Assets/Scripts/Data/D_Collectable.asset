@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d79e6151d8a02e49be759fed7406487, type: 3}
-  m_Name: CollectableData
+  m_Name: D_Collectable
   m_EditorClassIdentifier: 
-  collectable_score_given: 1
-  collectable_speed_given: {x: 4, y: 4}
-  collectable_speed: {x: 2, y: 2}
+  entity: {fileID: 6302830597762147328, guid: a6374d068ce412444bab727e2cab3f13, type: 3}
+  collectable_score_given: 0
+  collectable_speed_given: {x: 1, y: 1}
+  collectable_speed: {x: 1, y: 1}
   collectable_follow_duration: 10

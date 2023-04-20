@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Spawner;
 
-public class Wind : MonoBehaviour
+public class Wind : MonoBehaviour, ISpawnable
 {
     [SerializeField] WindData windData;
     public GameObject direction;
@@ -14,7 +15,10 @@ public class Wind : MonoBehaviour
     public Delegate.D2 onEntityEnter;
     public Delegate.D2 onEntityExit;
 
+    ISpawnable iSpawnable;
+
     Coroutine c_push;
+    Coroutine c_delete;
 
     void Awake()
     {
@@ -29,7 +33,29 @@ public class Wind : MonoBehaviour
         onEntityEnter += StartPushEntity;
         onEntityExit += StopPushEntity;
 
-        ManagerHelper.GetWindManager().onPlayerEnterWind += StopPushEntity;
+        iSpawnable = this as ISpawnable;
+
+        ManagerHelper.GetSeasonManager().onSeasonChange += (ESeasons eason) => { iSpawnable.DeleteEntity(); };
+
+        iSpawnable.DeleteEntityBelowPlayer();
+    }
+
+    private void OnDestroy()
+    {
+        onEntityEnter -= StartPushEntity;
+        onEntityExit -= StopPushEntity;
+
+        if (c_delete != null)
+        {
+            StopCoroutine(c_delete);
+            c_delete = null;
+        }
+
+        if (c_push != null)
+        {
+            StopCoroutine(c_push);
+            c_push = null;
+        }
     }
 
     public void StartPushEntity(GameObject entity)
@@ -119,5 +145,30 @@ public class Wind : MonoBehaviour
         Debug.Log("pulse");
 
         EntityHelper.GetEntityRigidbody(entity).AddForce(EntityHelper.GetForwardDirection(direction) * 10000 * EntityHelper.GetSpeed(entity) * Time.fixedDeltaTime);
+    }
+
+    void ISpawnable.DeleteEntityBelowPlayer()
+    {
+        if (c_delete != null)
+            return;
+
+        c_delete = StartCoroutine(DeleteEntityBelowPlayerTracking());
+        IEnumerator DeleteEntityBelowPlayerTracking()
+        {
+            while (true)
+            {
+                if (MathsHelper.CompareFloat(EntityHelper.GetPosition(gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.LOWER))
+                {
+                    Destroy(gameObject);
+                }
+                yield return null;
+            }
+        }
+    }
+
+    void ISpawnable.DeleteEntity()
+    {
+        if (this)
+            Destroy(gameObject);
     }
 }

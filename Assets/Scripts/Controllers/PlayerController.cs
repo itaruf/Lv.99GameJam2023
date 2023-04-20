@@ -28,6 +28,8 @@ public class PlayerController : Controller
 
         rb = PlayerHelper.GetPlayerRigidBody();
         EntityHelper.SetGravity(gameObject, playerData.player_gravity);
+
+
     }
 
     private void Update()

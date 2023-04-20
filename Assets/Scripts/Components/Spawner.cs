@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour, IActivity
     [System.Serializable]
     public struct Spawnable
     {
-        public GameObject spawnable;
+        public EntityData entity;
         public float nbMax;
         public float frequencyOfApparition;
         public float delayBeforeNextSpawn;
@@ -107,7 +107,7 @@ public class Spawner : MonoBehaviour, IActivity
     void Instantiate(Spawnable spawnable)
     {
         /*Instantiate(spawnable.spawnable, GetSpawnPoint().transform.localPosition, Quaternion.identity);*/
-        Instantiate(spawnable.spawnable, GetSpawnPoint().transform.position, Quaternion.identity);
+        Instantiate(spawnable.entity.entity, GetSpawnPoint().transform.position, Quaternion.identity);
 
     }
 
@@ -121,11 +121,12 @@ public class Spawner : MonoBehaviour, IActivity
             {
                 int random = UnityEngine.Random.Range(0, spawn_points.Count);
                 point = spawn_points[random];
-                if (!point.isOccupied)
+                if (!point.isOccupied
+                    &&
+                    MathsHelper.CompareFloat(EntityHelper.GetPosition(point.gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.HIGHER))
                 {
                     yield break;
                 }
-
                 yield return new WaitForSeconds(1f);
             }
         }

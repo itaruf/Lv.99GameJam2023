@@ -15,26 +15,25 @@ public class BackgroundManager : MonoBehaviour
     [Serializable] public class Key { public ESeasons e_season; }
     [Serializable] public class Value { public Season season; }
 
-    int inc = 0;
-
-    void Awake()
+    void Start()
     {
         int nb_season = season_map.Count;
         
         if (nb_season > 0)
         {
             current_season = season_map.ElementAt(0);
+            (current_season.Value as IActivity).Activation();
             foreach (Background season_background in current_season.Value.backgrounds)
             {
                 EnableBackground(season_background);
             }
-        }
 
-        for (int i = 1; i < nb_season; ++i)
-        {
-            foreach (Background season_background in season_map.ElementAt(i).Value.backgrounds)
+            for (int i = 1; i < nb_season; ++i)
             {
-                DisableBackground(season_background);
+                foreach (Background season_background in season_map.ElementAt(i).Value.backgrounds)
+                {
+                    DisableBackground(season_background);
+                }
             }
         }
 
@@ -46,8 +45,9 @@ public class BackgroundManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            //SetBackground(++inc);
-            SetBackground(ESeasons.WINTER);
+            SeasonManager season_manager = ManagerHelper.GetSeasonManager();
+            SetBackground(++season_manager.current_season_index);
+            /*SetBackground(ESeasons.WINTER);*/
         }
     }
 
@@ -61,13 +61,14 @@ public class BackgroundManager : MonoBehaviour
         if (selected_background.Key == current_season.Key)
             return;
 
-        foreach(Background season in selected_background.Value.backgrounds)
+        (current_season.Value as IActivity).Deactivation();
+        foreach (Background season in selected_background.Value.backgrounds)
         {
             DisableBackground(season);
         }
 
         current_season = selected_background;
-
+        (current_season.Value as IActivity).Activation();
         foreach (Background season in selected_background.Value.backgrounds)
         {
             EnableBackground(season);

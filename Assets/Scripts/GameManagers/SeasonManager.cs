@@ -6,14 +6,26 @@ public class SeasonManager : MonoBehaviour
 {
     public Delegate.D5 onSeasonChange;
 
-    void Start()
+    [HideInInspector] public int current_season_index = 0;
+
+    void Awake()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetNextSeasonIndex()
     {
-        
+        int nb_season = ManagerHelper.GetBackgroundManager().season_map.Count;
+
+        if (current_season_index == nb_season - 1)
+        {
+            current_season_index = 0;
+        }
+        else
+        {
+            ++current_season_index;
+        }
+
+        return current_season_index;
     }
 }
