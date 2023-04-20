@@ -5,6 +5,7 @@ using UnityEngine;
 public class SeasonManager : MonoBehaviour
 {
     public Delegate.D5 onSeasonChange;
+    public Delegate.D4 onSeasonChangeIndex;
 
     [HideInInspector] public int current_season_index = 0;
 

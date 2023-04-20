@@ -46,18 +46,16 @@ public class Spawner : MonoBehaviour, IActivity
                 spawn_points.Add(spawn_point);
             }
         }
-
-        StartSpawn();
     }
 
     void IActivity.Activation()
     {
-        throw new NotImplementedException();
+        StartSpawn();
     }
 
     void IActivity.Deactivation()
     {
-        throw new NotImplementedException();
+        StopSpawn();
     }
 
     public void StartSpawn()
@@ -65,32 +63,35 @@ public class Spawner : MonoBehaviour, IActivity
         if (c_spawn != null)
             return;
 
-        c_spawn = StartCoroutine(SpawnTracking());
-        IEnumerator SpawnTracking()
+        if (spawnables.Count > 0)
         {
-            while (true)
+            c_spawn = StartCoroutine(SpawnTracking());
+            IEnumerator SpawnTracking()
             {
-                for (int i = 0; i < spawnables.Count; ++i)
+                while (true)
                 {
-                    EEntities eentity = spawnables.ElementAt(i).Key;
-                    Spawnable spawnable = spawnables.ElementAt(i).Value;
-
-                    if (spawnable.currentDelayTimer < spawnable.delayBeforeNextSpawn)
+                    for (int i = 0; i < spawnables.Count; ++i)
                     {
-                        spawnable.currentDelayTimer += Time.deltaTime;
+                        EEntities eentity = spawnables.ElementAt(i).Key;
+                        Spawnable spawnable = spawnables.ElementAt(i).Value;
+
+                        if (spawnable.currentDelayTimer < spawnable.delayBeforeNextSpawn)
+                        {
+                            spawnable.currentDelayTimer += Time.deltaTime;
+                        }
+
+                        else if (spawnable.currentDelayTimer >= spawnable.delayBeforeNextSpawn)
+                        {
+                            // We can spawn
+                            spawnable.currentDelayTimer = 0;
+                            Instantiate(spawnable);
+                        }
+
+                        spawnables[eentity] = spawnable;
                     }
 
-                    else if (spawnable.currentDelayTimer >= spawnable.delayBeforeNextSpawn)
-                    { 
-                        // We can spawn
-                        spawnable.currentDelayTimer = 0;
-                        Instantiate(spawnable);
-                    }
-
-                    spawnables[eentity] = spawnable;
+                    yield return null;
                 }
-
-                yield return null;
             }
         }
     }

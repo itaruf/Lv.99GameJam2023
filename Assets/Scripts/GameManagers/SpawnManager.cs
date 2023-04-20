@@ -24,12 +24,14 @@ public class SpawnManager : MonoBehaviour
         if (nb_spawner > 0)
         {
             current_spawner = spawners_map.ElementAt(0);
-            SeasonManager season_manager = ManagerHelper.GetSeasonManager();
-            season_manager.onSeasonChange += UpdateSpawner;
+            /*SeasonManager season_manager = ManagerHelper.GetSeasonManager();
+            season_manager.onSeasonChange += UpdateSpawner;*/
+
+            current_spawner.Value.StartSpawn();
         }
     }
 
-    void UpdateSpawner(ESeasons e_season)
+    public void UpdateSpawner(ESeasons e_season)
     {
         KeyValuePair<ESeasons, Spawner> selected_season = new KeyValuePair<ESeasons, Spawner>(e_season, spawners_map[e_season]);
 
@@ -37,13 +39,10 @@ public class SpawnManager : MonoBehaviour
             return;
 
         current_spawner.Value.StopSpawn();
+        current_spawner = selected_season;
         if (current_spawner.Value)
         {
-            current_spawner = selected_season;
-            if (current_spawner.Value)
-            {
-                current_spawner.Value.StartSpawn();
-            }
+            current_spawner.Value.StartSpawn();
         }
     }
 

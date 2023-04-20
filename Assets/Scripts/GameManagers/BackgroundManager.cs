@@ -38,7 +38,8 @@ public class BackgroundManager : MonoBehaviour
         }
 
         SeasonManager season_manager = ManagerHelper.GetSeasonManager();
-        season_manager.onSeasonChange += SetBackground;
+        /*season_manager.onSeasonChange += SetBackground;*/
+        season_manager.onSeasonChangeIndex += SetBackground;
     }
 
     private void Update()
@@ -46,7 +47,7 @@ public class BackgroundManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             SeasonManager season_manager = ManagerHelper.GetSeasonManager();
-            SetBackground(++season_manager.current_season_index);
+            SetBackground(season_manager.GetNextSeasonIndex());
             /*SetBackground(ESeasons.WINTER);*/
         }
     }
@@ -67,12 +68,16 @@ public class BackgroundManager : MonoBehaviour
             DisableBackground(season);
         }
 
+        SpawnManager spawnManager = ManagerHelper.GetSpawnManager();
+        spawnManager.UpdateSpawner(selected_background.Key);
+
         current_season = selected_background;
         (current_season.Value as IActivity).Activation();
         foreach (Background season in selected_background.Value.backgrounds)
         {
             EnableBackground(season);
         }
+
     }
 
     void SetBackground(ESeasons e_season)
@@ -82,13 +87,17 @@ public class BackgroundManager : MonoBehaviour
         if (selected_background.Key == current_season.Key)
             return;
 
+        (current_season.Value as IActivity).Deactivation();
         foreach (Background season in selected_background.Value.backgrounds)
         {
             DisableBackground(season);
         }
 
-        current_season = selected_background;
+        SpawnManager spawnManager = ManagerHelper.GetSpawnManager();
+        spawnManager.UpdateSpawner(selected_background.Key);
 
+        current_season = selected_background;
+        (current_season.Value as IActivity).Activation();
         foreach (Background season in selected_background.Value.backgrounds)
         {
             EnableBackground(season);

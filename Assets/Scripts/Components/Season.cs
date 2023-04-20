@@ -30,15 +30,6 @@ public class Season : MonoBehaviour, IActivity
         iActivity = this as IActivity;
     }
 
-    void Deactivation()
-    {
-        if (c_active != null)
-        {
-            StopCoroutine(c_active);
-            c_active = null;
-        }
-    }
-
     void IActivity.Activation()
     {
         if (c_active != null)
@@ -57,7 +48,9 @@ public class Season : MonoBehaviour, IActivity
                 {
                     SeasonManager season_manager = ManagerHelper.GetSeasonManager();
                     BackgroundManager background_manager = ManagerHelper.GetBackgroundManager();
+                    
                     season_manager.onSeasonChange(background_manager.season_map.ElementAt(season_manager.GetNextSeasonIndex()).Key);
+                    season_manager.onSeasonChangeIndex(season_manager.GetNextSeasonIndex());
 
                     PlayerHelper.SetPlayerPosition(new Vector3(PlayerHelper.GetPlayerPosition().x, y_lower_bound, 0));
                 }
