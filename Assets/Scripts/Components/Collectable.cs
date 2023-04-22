@@ -73,9 +73,9 @@ public class Collectable : Entity, ICollectable, ISpawnable
             while (current_time > 0)
             {
                 current_time -= Time.deltaTime;
-                transform.position = Vector3.Slerp(transform.position, new Vector3(PlayerHelper.GetPlayerPosition().x + x_offset, PlayerHelper.GetPlayerPosition().y - y_offset), PlayerHelper.GetPlayerSpeed().x * Time.deltaTime);
+                transform.position = Vector3.Slerp(transform.position, new Vector3(PlayerHelper.GetPlayerPosition().x + x_offset, PlayerHelper.GetPlayerPosition().y - y_offset), PlayerHelper.GetPlayerSpeed().x * Time.fixedDeltaTime);
 
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForFixedUpdate();
             }
 
             (this as ICollectable).StopFollowPlayer();

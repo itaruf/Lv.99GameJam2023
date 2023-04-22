@@ -71,9 +71,9 @@ public class Wind : MonoBehaviour, ISpawnable
                 while (true)
                 {                  
                     EntityHelper.SetGravity(entity, PlayerHelper.GetPlayerData().player_gravity_in_wind);
-                    EntityHelper.GetEntityRigidbody(entity).AddForce(EntityHelper.GetForwardDirection(direction) * force * EntityHelper.GetSpeed(entity) * Time.fixedDeltaTime);
+                    EntityHelper.GetEntityRigidbody(entity).AddForce(EntityHelper.GetForwardDirection(direction) * force * EntityHelper.GetSpeed(entity));
 
-                    yield return null;
+                    yield return new WaitForEndOfFrame();
                 }
             }
         }

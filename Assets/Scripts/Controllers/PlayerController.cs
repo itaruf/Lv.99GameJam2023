@@ -61,8 +61,9 @@ public class PlayerController : Controller
         {
             while (true)
             {
-                rb.AddForce(EntityHelper.GetForwardDirection(gameObject) * ManagerHelper.GetGlobalWindForce() * speed * Time.deltaTime);
-                yield return null;
+
+                rb.AddForce(EntityHelper.GetForwardDirection(gameObject) * ManagerHelper.GetGlobalWindForce() * speed);
+                yield return new WaitForEndOfFrame();
             }
         }
     }
@@ -78,7 +79,6 @@ public class PlayerController : Controller
 
     public void ModifySpeed(Vector2 newVector2, bool shouldOverride = false)
     {
-        
         Vector2 v;
         float x, y;
 
