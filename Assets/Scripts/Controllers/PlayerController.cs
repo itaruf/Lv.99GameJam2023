@@ -38,7 +38,13 @@ public class PlayerController : Controller
         {
             ModifySpeed(base_speed, true);
         }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            ModifySpeed(D_Player.player_max_speed, true);
+        }
     }
+
     void Start()
     {
         MoveContinuously();   

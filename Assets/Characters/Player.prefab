@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 810679197}
   - component: {fileID: 810679195}
   - component: {fileID: 349601101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_input: {fileID: 3142281760631114369, guid: 5110f49999d31ab47b6d65e491c3f1cd, type: 3}
   jump_input: {fileID: 3174378304653876317, guid: 5110f49999d31ab47b6d65e491c3f1cd, type: 3}
-  playerData: {fileID: 11400000, guid: eb591515ce404104c9c5e8eee4bd37cc, type: 2}
+  D_Player: {fileID: 11400000, guid: eb591515ce404104c9c5e8eee4bd37cc, type: 2}
 --- !u!114 &3477118718920127340
 MonoBehaviour:
   m_ObjectHideFlags: 0

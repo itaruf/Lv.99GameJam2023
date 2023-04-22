@@ -121,60 +121,22 @@ public class Spawner : MonoBehaviour, IActivity
             {
                 int random = UnityEngine.Random.Range(0, spawn_points.Count);
                 point = spawn_points[random];
-                if (!point.isOccupied
-                    &&
-                    MathsHelper.CompareFloat(EntityHelper.GetPosition(point.gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.HIGHER))
+                if (!point.isOccupied)
                 {
-                    if (c_select_point != null)
+
+                    if (MathsHelper.CompareFloat(EntityHelper.GetPosition(point.gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.HIGHER))
                     {
-                        StopCoroutine(c_select_point);
-                        c_select_point = null;
+                        if (c_select_point != null)
+                        {
+                            Instantiate(spawnable.entity.entity, point.transform.position, Quaternion.identity);
+                            point.StartOccupationDelay();
+                            StopCoroutine(c_select_point);
+                            c_select_point = null;
+                        }
                     }
-
-                    /*Debug.Log(EntityHelper.GetPosition(point.gameObject));
-                    Debug.Log(PlayerHelper.GetPlayerPosition());*/
-
-                    Instantiate(spawnable.entity.entity, point.transform.position, Quaternion.identity);
-                    point.StartOccupationDelay();
-                    yield return point;
                 }
-
                 yield return null;
             }
         }
-    }
-
-    public Point GetSpawnPoint()
-    {
-        Point point = null;
-        /*c_select_point = StartCoroutine(RandomPointTracking());
-        IEnumerator RandomPointTracking()
-        {
-            while (true)
-            {
-                int random = UnityEngine.Random.Range(0, spawn_points.Count);
-                point = spawn_points[random];
-                if (!point.isOccupied
-                    &&
-                    MathsHelper.CompareFloat(EntityHelper.GetPosition(point.gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.HIGHER))
-                {
-                    if (c_select_point != null)
-                    {
-                        StopCoroutine(c_select_point);
-                        c_select_point = null;             
-                    }
-
-                    Debug.Log(EntityHelper.GetPosition(point.gameObject));
-                    Debug.Log(PlayerHelper.GetPlayerPosition());
-                    point.StartOccupationDelay();
-                    yield return point;
-                }
-
-                yield return new WaitForEndOfFrame();
-            }
-        }
-
-        point.StartOccupationDelay();*/
-        return point;
     }
 }

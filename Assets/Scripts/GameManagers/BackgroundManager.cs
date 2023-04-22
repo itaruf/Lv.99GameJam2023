@@ -46,7 +46,6 @@ public class BackgroundManager : MonoBehaviour
         {
             SeasonManager season_manager = ManagerHelper.GetSeasonManager();
             SetBackground(season_manager.GetNextSeasonIndex());
-            /*SetBackground(ESeasons.WINTER);*/
         }
     }
 

@@ -14,17 +14,12 @@ public class Point : MonoBehaviour
         {
             EntityHelper.SetActive(spriteRenderer, false);
         }
-
-        // On change background   
-        // += StopOccupationDelay();
     }
 
     public void StartOccupationDelay()
     {
         if (c_occupation != null)
             return;
-
-        isOccupied = true;
 
         float current_time = occupationDelay;
 
@@ -68,7 +63,7 @@ public class Point : MonoBehaviour
         }
         else
         {
-            isOccupied = false;
+            StopOccupationDelay();
         }
     }
 }
