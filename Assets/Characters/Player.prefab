@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 974336529}
   - component: {fileID: 974336528}
   - component: {fileID: 974336527}
+  - component: {fileID: 1565665003}
   m_Layer: 0
   m_Name: Rainbow
   m_TagString: Untagged
@@ -105,6 +106,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1565665003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974336526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcad982b51fd53b4dbb3513a4e66cd95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
 --- !u!1 &2931780303115392777
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +230,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInputs
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 7367501359822163590}
+  m_Camera: {fileID: 0}
 --- !u!114 &9037155394584426409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,10 +388,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7367501360927901220, guid: 9fd1b28768061ab4dac8ac7a2adf1a72, type: 3}
       propertyPath: m_Name
-      value: Main Camera (1)
+      value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 7367501360927901223, guid: 9fd1b28768061ab4dac8ac7a2adf1a72, type: 3}
       propertyPath: orthographic size
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367501360927901223, guid: 9fd1b28768061ab4dac8ac7a2adf1a72, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7367501360927901400, guid: 9fd1b28768061ab4dac8ac7a2adf1a72, type: 3}
@@ -429,10 +447,5 @@ PrefabInstance:
 --- !u!4 &7367501359822163577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7367501360927901400, guid: 9fd1b28768061ab4dac8ac7a2adf1a72, type: 3}
-  m_PrefabInstance: {fileID: 1178126497}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &7367501359822163590 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7367501360927901223, guid: 9fd1b28768061ab4dac8ac7a2adf1a72, type: 3}
   m_PrefabInstance: {fileID: 1178126497}
   m_PrefabAsset: {fileID: 0}

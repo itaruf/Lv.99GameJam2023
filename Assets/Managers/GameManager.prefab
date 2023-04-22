@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51cbde256de12fc4e99c6e3c3cea8074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  season_map:
+  background_season_map:
     keys: 00000000010000000200000003000000
     values:
     - {fileID: 0}
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStartPosition: {x: 0, y: -3}
+  yOffsetFromPlayerToDestroyEntity: 3
   spawners_map:
     keys: 00000000010000000200000003000000
     values:
@@ -131,3 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10004fe5cb51c840a635a80ec27bf61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  current_season_index: 0
+  season_map:
+    keys: 00000000010000000200000003000000
+    values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

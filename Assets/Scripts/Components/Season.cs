@@ -6,27 +6,11 @@ using UnityEngine;
 
 public class Season : MonoBehaviour, IActivity
 {
-    public List<Background> backgrounds;
-
     Coroutine c_active;
     IActivity iActivity;
 
     void Awake()
     {
-        Background[] backgrounds_array = GetComponentsInChildren<Background>();
-
-        if (backgrounds.Contains(null))
-            backgrounds.Clear();
-
-        if (backgrounds.Count != backgrounds_array.Length)
-        {
-            backgrounds.Clear();
-            foreach(Background background in backgrounds_array)
-            {
-                backgrounds.Add(background);
-            }
-        }
-
         iActivity = this as IActivity;
     }
 
