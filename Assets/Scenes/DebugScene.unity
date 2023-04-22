@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3070991074587856501, guid: 67b091cfe742e3041b1fe79cbe438813, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.99
+      value: -2.22
       objectReference: {fileID: 0}
     - target: {fileID: 3070991074587856501, guid: 67b091cfe742e3041b1fe79cbe438813, type: 3}
       propertyPath: m_LocalPosition.z
@@ -703,6 +703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Season_Winter
       objectReference: {fileID: 0}
+    - target: {fileID: 9053014418149373732, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
 --- !u!4 &1540948579 stripped
@@ -1075,6 +1079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Season_Summer
       objectReference: {fileID: 0}
+    - target: {fileID: 9053014418149373732, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
 --- !u!4 &1777389857 stripped
@@ -1244,6 +1252,10 @@ PrefabInstance:
     - target: {fileID: 9053014418149373732, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: m_Name
       value: Season_Autumn
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053014418149373732, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}

@@ -35,7 +35,7 @@ public class Wind : MonoBehaviour, ISpawnable
 
         iSpawnable = this as ISpawnable;
 
-        ManagerHelper.GetSeasonManager().onSeasonChange += (ESeasons eason) => { iSpawnable.DeleteEntity(); };
+        ManagerHelper.GetSeasonManager().onSeasonChangeIndex += (int index) => { iSpawnable.DeleteEntity(); };
 
         iSpawnable.DeleteEntityBelowPlayer();
     }
@@ -149,6 +149,8 @@ public class Wind : MonoBehaviour, ISpawnable
 
     void ISpawnable.DeleteEntityBelowPlayer()
     {
+        return;
+
         if (c_delete != null)
             return;
 

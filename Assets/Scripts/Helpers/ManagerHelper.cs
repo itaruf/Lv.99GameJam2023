@@ -6,7 +6,10 @@ public static class ManagerHelper
 {
     public static GameManager GetGameManager()
     {
-        return Object.FindObjectOfType<GameManager>();
+        if (!GameManager.gameManager)
+            return Object.FindObjectOfType<GameManager>();
+        else
+            return GameManager.gameManager;
     }
 
     public static WindManager GetWindManager()

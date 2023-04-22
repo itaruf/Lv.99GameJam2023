@@ -20,15 +20,19 @@ public class SpawnManager : MonoBehaviour
 
     void Awake()
     {
-        int nb_spawner = spawners_map.Count;
-        if (nb_spawner > 0)
-        {
-            current_spawner = spawners_map.ElementAt(0);
-            /*SeasonManager season_manager = ManagerHelper.GetSeasonManager();
-            season_manager.onSeasonChange += UpdateSpawner;*/
+        SeasonManager season_manager = ManagerHelper.GetSeasonManager();
+        season_manager.onSeasonStart += StartSeasonSpawn;
+    }
 
-            current_spawner.Value.StartSpawn();
-        }
+    private void Start()
+    {
+
+    }
+
+    void StartSeasonSpawn(int index)
+    {
+        current_spawner = spawners_map.ElementAt(index);
+        current_spawner.Value.StartSpawn();
     }
 
     public void UpdateSpawner(ESeasons e_season)

@@ -32,7 +32,7 @@ public class Collectable : Entity, ICollectable, ISpawnable
         iSpawnable = this as ISpawnable;
         iCollectable = this as ICollectable;
 
-        ManagerHelper.GetSeasonManager().onSeasonChange += (ESeasons eason) => { iSpawnable.DeleteEntity(); };
+        ManagerHelper.GetSeasonManager().onSeasonChangeIndex += (int index) => { iSpawnable.DeleteEntity(); };
 
         iSpawnable.DeleteEntityBelowPlayer();
     }
@@ -135,6 +135,8 @@ public class Collectable : Entity, ICollectable, ISpawnable
 
     void ISpawnable.DeleteEntityBelowPlayer()
     {
+        return;
+
         if (c_delete != null)
             return;
 
@@ -145,7 +147,12 @@ public class Collectable : Entity, ICollectable, ISpawnable
             {
                 if (MathsHelper.CompareFloat(EntityHelper.GetPosition(gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.LOWER))
                 {
-                    Destroy(gameObject);
+                    if (c_follow == null)
+                    {
+                        Destroy(gameObject);
+                    }
+                    else
+                        yield break;
                 }
                 yield return null;
             }

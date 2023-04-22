@@ -12,8 +12,15 @@ public class GameManager : MonoBehaviour
     public SpawnManager spawnManager;
     public SeasonManager seasonManager;
 
+    [HideInInspector] public static GameManager gameManager;
+
     void Awake()
     {
+        if (!gameManager)
+        {
+            gameManager = this;
+        }
+
         if (!player)
             player = FindObjectOfType<Player>();
 

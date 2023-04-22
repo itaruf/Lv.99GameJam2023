@@ -5,8 +5,6 @@ using System.Drawing;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static Spawner;
 
 public class Spawner : MonoBehaviour, IActivity
 {
@@ -30,6 +28,7 @@ public class Spawner : MonoBehaviour, IActivity
     [HideInInspector] public List<Point> spawn_points;
 
     Coroutine c_spawn;
+    Coroutine c_select_point;
 
     void Awake()
     {
@@ -90,8 +89,9 @@ public class Spawner : MonoBehaviour, IActivity
                         spawnables[eentity] = spawnable;
                     }
 
-                    yield return null;
+                    yield return new WaitForEndOfFrame();
                 }
+
             }
         }
     }
@@ -103,19 +103,18 @@ public class Spawner : MonoBehaviour, IActivity
 
         StopCoroutine(c_spawn);
         c_spawn = null;
+
+        if (c_select_point != null)
+        {
+            StopCoroutine(c_select_point);
+            c_select_point = null;
+        }
     }
 
     void Instantiate(Spawnable spawnable)
     {
-        /*Instantiate(spawnable.spawnable, GetSpawnPoint().transform.localPosition, Quaternion.identity);*/
-        Instantiate(spawnable.entity.entity, GetSpawnPoint().transform.position, Quaternion.identity);
-
-    }
-
-    public Point GetSpawnPoint()
-    {
         Point point = null;
-        StartCoroutine(RandomPointTracking());
+        c_select_point = StartCoroutine(RandomPointTracking());
         IEnumerator RandomPointTracking()
         {
             while (true)
@@ -126,13 +125,56 @@ public class Spawner : MonoBehaviour, IActivity
                     &&
                     MathsHelper.CompareFloat(EntityHelper.GetPosition(point.gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.HIGHER))
                 {
-                    yield break;
+                    if (c_select_point != null)
+                    {
+                        StopCoroutine(c_select_point);
+                        c_select_point = null;
+                    }
+
+                    /*Debug.Log(EntityHelper.GetPosition(point.gameObject));
+                    Debug.Log(PlayerHelper.GetPlayerPosition());*/
+
+                    Instantiate(spawnable.entity.entity, point.transform.position, Quaternion.identity);
+                    point.StartOccupationDelay();
+                    yield return point;
                 }
-                yield return new WaitForSeconds(1f);
+
+                yield return null;
+            }
+        }
+    }
+
+    public Point GetSpawnPoint()
+    {
+        Point point = null;
+        /*c_select_point = StartCoroutine(RandomPointTracking());
+        IEnumerator RandomPointTracking()
+        {
+            while (true)
+            {
+                int random = UnityEngine.Random.Range(0, spawn_points.Count);
+                point = spawn_points[random];
+                if (!point.isOccupied
+                    &&
+                    MathsHelper.CompareFloat(EntityHelper.GetPosition(point.gameObject).y, PlayerHelper.GetPlayerPosition().y, MathsHelper.EMathSymbol.HIGHER))
+                {
+                    if (c_select_point != null)
+                    {
+                        StopCoroutine(c_select_point);
+                        c_select_point = null;             
+                    }
+
+                    Debug.Log(EntityHelper.GetPosition(point.gameObject));
+                    Debug.Log(PlayerHelper.GetPlayerPosition());
+                    point.StartOccupationDelay();
+                    yield return point;
+                }
+
+                yield return new WaitForEndOfFrame();
             }
         }
 
-        point.StartOccupationDelay();
+        point.StartOccupationDelay();*/
         return point;
     }
 }

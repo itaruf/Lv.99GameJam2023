@@ -36,6 +36,7 @@ public class Season : MonoBehaviour, IActivity
             return;
 
         Player player = PlayerHelper.GetPlayer();
+
         c_active = StartCoroutine(ActiveTracking());
         IEnumerator ActiveTracking()
         {
@@ -49,10 +50,7 @@ public class Season : MonoBehaviour, IActivity
                     SeasonManager season_manager = ManagerHelper.GetSeasonManager();
                     BackgroundManager background_manager = ManagerHelper.GetBackgroundManager();
                     
-                    season_manager.onSeasonChange(background_manager.season_map.ElementAt(season_manager.GetNextSeasonIndex()).Key);
                     season_manager.onSeasonChangeIndex(season_manager.GetNextSeasonIndex());
-
-                    PlayerHelper.SetPlayerPosition(new Vector3(PlayerHelper.GetPlayerPosition().x, y_lower_bound, 0));
                 }
 
                 yield return null;

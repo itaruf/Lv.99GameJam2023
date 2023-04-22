@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa3aac9ee4306c4bb7c3c16e616e766, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  player_speed: {x: 5, y: 5}
+  player_speed: {x: 5, y: 12}
   player_jump_velocity: {x: 2, y: 2}
   player_gravity_in_wind: 0
   player_gravity: 0
   player_min_speed: {x: 1, y: 1}
-  player_max_speed: {x: 10, y: 10}
+  player_max_speed: {x: 10, y: 15}

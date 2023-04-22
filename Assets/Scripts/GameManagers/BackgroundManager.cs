@@ -22,7 +22,9 @@ public class BackgroundManager : MonoBehaviour
         if (nb_season > 0)
         {
             current_season = season_map.ElementAt(0);
-            (current_season.Value as IActivity).Activation();
+            Season season = current_season.Value;
+            (season as IActivity).Activation();
+
             foreach (Background season_background in current_season.Value.backgrounds)
             {
                 EnableBackground(season_background);
@@ -38,8 +40,8 @@ public class BackgroundManager : MonoBehaviour
         }
 
         SeasonManager season_manager = ManagerHelper.GetSeasonManager();
-        /*season_manager.onSeasonChange += SetBackground;*/
         season_manager.onSeasonChangeIndex += SetBackground;
+        season_manager.onSeasonStart(0);
     }
 
     private void Update()
@@ -57,52 +59,57 @@ public class BackgroundManager : MonoBehaviour
         if (index < 0 || index > season_map.Count - 1)
             return;
 
-        KeyValuePair<ESeasons, Season> selected_background = season_map.ElementAt(index);
+        KeyValuePair<ESeasons, Season> selected_season = season_map.ElementAt(index);
 
-        if (selected_background.Key == current_season.Key)
+        if (selected_season.Key == current_season.Key)
             return;
 
         (current_season.Value as IActivity).Deactivation();
-        foreach (Background season in selected_background.Value.backgrounds)
+        foreach (Background background_season in selected_season.Value.backgrounds)
         {
-            DisableBackground(season);
+            DisableBackground(background_season);
         }
+
+        current_season = selected_season;
+
+        foreach (Background background_season in selected_season.Value.backgrounds)
+        {
+            EnableBackground(background_season);
+        }
+
+        Season season = current_season.Value;
+
+        PlayerHelper.SetPlayerPosition(new Vector3(PlayerHelper.GetPlayerPosition().x, EntityHelper.GetBoxCollider2D(season.gameObject).bounds.min.y, 0));
+
+        (season as IActivity).Activation();
 
         SpawnManager spawnManager = ManagerHelper.GetSpawnManager();
-        spawnManager.UpdateSpawner(selected_background.Key);
-
-        current_season = selected_background;
-        (current_season.Value as IActivity).Activation();
-        foreach (Background season in selected_background.Value.backgrounds)
-        {
-            EnableBackground(season);
-        }
-
+        spawnManager.UpdateSpawner(selected_season.Key);
     }
 
-    void SetBackground(ESeasons e_season)
+    /*void SetBackground(ESeasons e_season)
     {
-        KeyValuePair<ESeasons, Season> selected_background = new KeyValuePair<ESeasons, Season>(e_season, season_map[e_season]);
+        KeyValuePair<ESeasons, Season> selected_season = new KeyValuePair<ESeasons, Season>(e_season, season_map[e_season]);
 
-        if (selected_background.Key == current_season.Key)
+        if (selected_season.Key == current_season.Key)
             return;
 
         (current_season.Value as IActivity).Deactivation();
-        foreach (Background season in selected_background.Value.backgrounds)
+        foreach (Background season in selected_season.Value.backgrounds)
         {
             DisableBackground(season);
         }
 
         SpawnManager spawnManager = ManagerHelper.GetSpawnManager();
-        spawnManager.UpdateSpawner(selected_background.Key);
+        spawnManager.UpdateSpawner(selected_season.Key);
 
-        current_season = selected_background;
+        current_season = selected_season;
         (current_season.Value as IActivity).Activation();
-        foreach (Background season in selected_background.Value.backgrounds)
+        foreach (Background season in selected_season.Value.backgrounds)
         {
             EnableBackground(season);
         }
-    }
+    }*/
 
     void EnableBackground(Background season_background)
     {

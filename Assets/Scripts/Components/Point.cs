@@ -24,6 +24,8 @@ public class Point : MonoBehaviour
         if (c_occupation != null)
             return;
 
+        isOccupied = true;
+
         float current_time = occupationDelay;
 
         c_occupation = StartCoroutine(OccupationDelayTracking());

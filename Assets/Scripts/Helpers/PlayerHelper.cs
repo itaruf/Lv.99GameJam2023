@@ -12,7 +12,12 @@ public static class PlayerHelper
 
     public static Player GetPlayer()
     {
-        return Object.FindObjectOfType<Player>();
+        Player player = ManagerHelper.GetGameManager().player;
+
+        if (!player)
+            return Object.FindObjectOfType<Player>();
+
+        return player;
     }
 
     public static bool IsPlayer(GameObject entity)
