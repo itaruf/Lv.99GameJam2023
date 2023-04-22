@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WindManager : MonoBehaviour
 {
-    [SerializeField] WindData globalWindData;
+    [SerializeField] D_Wind globalWindData;
     Vector2 force;
 
     public Wind currentWind { get; set; }

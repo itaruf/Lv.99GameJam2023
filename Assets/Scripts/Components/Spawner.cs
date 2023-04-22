@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour, IActivity
     [System.Serializable]
     public struct Spawnable
     {
-        public EntityData entity;
+        public D_Entity entity;
         public float nbMax;
         public float frequencyOfApparition;
         public float delayBeforeNextSpawn;

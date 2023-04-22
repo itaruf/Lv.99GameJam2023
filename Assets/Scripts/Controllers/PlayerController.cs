@@ -7,7 +7,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerController : Controller
 {
-    public PlayerData playerData;
+    public D_Player D_Player;
 
     private bool isInWind = false;
 
@@ -17,17 +17,17 @@ public class PlayerController : Controller
     {
         base.Awake();
 
-        if (playerData.player_min_speed.x > playerData.player_speed.x)
-            playerData.player_min_speed.x = playerData.player_speed.x;
+        if (D_Player.player_min_speed.x > D_Player.player_speed.x)
+            D_Player.player_min_speed.x = D_Player.player_speed.x;
 
-        if (playerData.player_min_speed.y > playerData.player_speed.y)
-            playerData.player_min_speed.y = playerData.player_speed.y;
+        if (D_Player.player_min_speed.y > D_Player.player_speed.y)
+            D_Player.player_min_speed.y = D_Player.player_speed.y;
 
-        speed = playerData.player_speed;
+        speed = D_Player.player_speed;
         base_speed = speed;
 
         rb = PlayerHelper.GetPlayerRigidBody();
-        EntityHelper.SetGravity(gameObject, playerData.player_gravity);
+        EntityHelper.SetGravity(gameObject, D_Player.player_gravity);
 
 
     }
@@ -94,8 +94,8 @@ public class PlayerController : Controller
             y = newVector2.y;
         }
 
-        v.x = Mathf.Clamp(x, PlayerHelper.GetPlayerData().player_min_speed.x, PlayerHelper.GetPlayerData().player_max_speed.x);
-        v.y = Mathf.Clamp(y, PlayerHelper.GetPlayerData().player_min_speed.y, PlayerHelper.GetPlayerData().player_max_speed.y);
+        v.x = Mathf.Clamp(x, PlayerHelper.GetD_Player().player_min_speed.x, PlayerHelper.GetD_Player().player_max_speed.x);
+        v.y = Mathf.Clamp(y, PlayerHelper.GetD_Player().player_min_speed.y, PlayerHelper.GetD_Player().player_max_speed.y);
 
         speed = v;
 

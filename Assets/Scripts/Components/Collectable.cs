@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectable : Entity, ICollectable, ISpawnable
 {
-    [SerializeField] CollectableData collectableData;
+    [SerializeField] D_Collectable collectableData;
 
     GameObject collectable_entity;
     int collectable_score_given;

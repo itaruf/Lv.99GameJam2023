@@ -31,9 +31,9 @@ public static class PlayerHelper
         return pc;
     }
 
-    public static PlayerData GetPlayerData()
+    public static D_Player GetD_Player()
     {
-        return GetPlayerController().playerData;
+        return GetPlayerController().D_Player;
     }
 
     public static CircleCollider2D GetPlayerCollectCollider()
