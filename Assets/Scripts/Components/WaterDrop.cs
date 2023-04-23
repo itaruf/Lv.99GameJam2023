@@ -57,7 +57,8 @@ public class WaterDrop : MonoBehaviour, ISpawnable, IActivity
         if (PlayerHelper.IsPlayer(collision.gameObject))
         {
             Vector2 player_speed = PlayerHelper.GetPlayerSpeed();
-            PlayerHelper.GetPlayerController().ModifySpeed(
+            PlayerController player_controller = PlayerHelper.GetPlayerController();
+            player_controller.ModifySpeed(
                 new Vector2
                 (
                     player_speed.x - waterdrop_speed_loss_given.x,
@@ -65,6 +66,7 @@ public class WaterDrop : MonoBehaviour, ISpawnable, IActivity
                 ),  true
                 );
 
+            player_controller.StartFlickerOnHit();
             iSpawnable.DeleteEntity();
         }
     }

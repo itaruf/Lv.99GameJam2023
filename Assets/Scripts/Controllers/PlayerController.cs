@@ -12,6 +12,7 @@ public class PlayerController : Controller
     private bool isInWind = false;
 
     Coroutine c_moveContinously;
+    Coroutine c_flicker;
 
     void Awake()
     {
@@ -43,8 +44,6 @@ public class PlayerController : Controller
         {
             ModifySpeed(D_Player.player_max_speed, true);
         }
-
-        Debug.Log(speed);
     }
 
     void Start()
@@ -123,6 +122,39 @@ public class PlayerController : Controller
                 isSuperBoostOn = false;
                 onStopSuperSpeed();
             }
+        }
+    }
+
+    public void StartFlickerOnHit()
+    {
+        if (c_flicker != null)
+            return;
+
+        float current_time = 1.5f;
+
+        c_flicker = StartCoroutine(FlickerTracking());
+        IEnumerator FlickerTracking()
+        {
+           SpriteRenderer player_sprite = EntityHelper.GetSpriteRenderer(gameObject);
+            while (current_time > 0)
+            {
+                current_time -= 0.5f;
+                player_sprite.enabled = !player_sprite.enabled;
+
+                yield return new WaitForSeconds(0.15f);
+            }
+
+            player_sprite.enabled = true;
+            StopFlickerOnHit();
+        }
+    }
+
+    public void StopFlickerOnHit()
+    {
+        if (c_flicker != null)
+        {
+            StopCoroutine(c_flicker);
+            c_flicker = null;
         }
     }
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: D_Camera
   m_EditorClassIdentifier: 
   enable_camera_lag_speed: 1
-  camera_speed: {x: 1, y: 2}
+  camera_speed: {x: 1, y: 3}
   camera_target: {fileID: 2931780303115392777, guid: 67b091cfe742e3041b1fe79cbe438813, type: 3}
   camera_offset_from_target: {x: 0, y: 2}

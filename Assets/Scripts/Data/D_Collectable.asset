@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: D_Collectable
   m_EditorClassIdentifier: 
   entity: {fileID: 6302830597762147328, guid: a6374d068ce412444bab727e2cab3f13, type: 3}
-  collectable_score_given: 0
+  collectable_score_given: 3
   collectable_speed_given: {x: 1, y: 2}
   collectable_speed: {x: 1, y: 1}
   collectable_follow_duration: 5

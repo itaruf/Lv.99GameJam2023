@@ -97,13 +97,16 @@ public class Bee : MonoBehaviour, ISpawnable, IActivity
         if (PlayerHelper.IsPlayer(collision.gameObject))
         {
             Vector2 player_speed = PlayerHelper.GetPlayerSpeed();
-            PlayerHelper.GetPlayerController().ModifySpeed(
+            PlayerController player_controller = PlayerHelper.GetPlayerController();
+            player_controller.ModifySpeed(
                 new Vector2
                 (
                     player_speed.x - bee_speed_loss_given.x,
                     player_speed.y - bee_speed_loss_given.y
                 ), true
             );
+
+            player_controller.StartFlickerOnHit();
 
             /*iSpawnable.DeleteEntity();*/
         }

@@ -84,4 +84,10 @@ public static class EntityHelper
         if (behaviour)
             behaviour.enabled = newBool;
     }
+
+    public static SpriteRenderer GetSpriteRenderer(GameObject entity)
+    {
+        entity.TryGetComponent(out SpriteRenderer spriteRenderer);
+        return spriteRenderer;
+    }
 }

@@ -18,6 +18,8 @@ public class Collectable : Entity, ICollectable, ISpawnable
     Coroutine c_follow;
     Coroutine c_delete;
 
+    public AudioSource audio;
+
     void Awake()
     {
         if (collectableData)
@@ -35,6 +37,9 @@ public class Collectable : Entity, ICollectable, ISpawnable
         ManagerHelper.GetSeasonManager().onSeasonChangeIndex += (int index) => { iSpawnable.DeleteEntity(); };
 
         iSpawnable.DeleteEntityBelowPlayer();
+
+        if (!audio)
+            TryGetComponent(out audio);
     }
 
     private void OnDestroy()
@@ -55,6 +60,7 @@ public class Collectable : Entity, ICollectable, ISpawnable
     void ICollectable.Collect()
     {
         EntityHelper.SetActiveCollider2D(gameObject, false);
+        audio.Play();
 
         if (collectableData)
             iCollectable.StartFollowPlayer();

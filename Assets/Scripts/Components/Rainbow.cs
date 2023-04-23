@@ -9,6 +9,8 @@ public class Rainbow : MonoBehaviour, IActivity
     SpriteRenderer spriteRenderer;
     Animator animator;
 
+    public AudioSource audio;
+
     void Awake()
     {
         IActivity iactivity = (this as IActivity);
@@ -35,6 +37,8 @@ public class Rainbow : MonoBehaviour, IActivity
             }
         }
 
+        if (!audio)
+            TryGetComponent(out audio);
 
         iactivity.Deactivation();
     }
@@ -43,11 +47,13 @@ public class Rainbow : MonoBehaviour, IActivity
     {
         EntityHelper.SetActive(spriteRenderer, true);
         EntityHelper.SetActive(animator, true);
+        audio.Play();
     }
 
     void IActivity.Deactivation()
     {
         EntityHelper.SetActive(spriteRenderer, false);
         EntityHelper.SetActive(animator, false);
+        audio.Stop();
     }
 }

@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && SceneManager.GetActiveScene().name == "TitleScreen")
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("DebugScene");
         }
     }
 }
