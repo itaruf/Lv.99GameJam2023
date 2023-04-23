@@ -22,6 +22,8 @@ public class WaterDrop : MonoBehaviour, ISpawnable, IActivity
 
         iSpawnable = this as ISpawnable;
         iActivity = this as IActivity;
+
+        ManagerHelper.GetSeasonManager().onSeasonChangeIndex += (int index) => { iSpawnable.DeleteEntity(); };
     }
 
     void IActivity.Activation()

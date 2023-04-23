@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa3aac9ee4306c4bb7c3c16e616e766, type: 3}
-  m_Name: D_Player
+  m_Script: {fileID: 11500000, guid: 15284614b1d456c43b4dec8bf20335e8, type: 3}
+  m_Name: D_Bee
   m_EditorClassIdentifier: 
-  player_speed: {x: 2, y: 2}
-  player_jump_velocity: {x: 2, y: 2}
-  player_gravity_in_wind: 0
-  player_gravity: 0
-  player_min_speed: {x: 1, y: 1}
-  player_max_speed: {x: 4, y: 10}
+  entity: {fileID: 1438564775438021333, guid: b473acb787da37f47be38de8f5bdc4ba, type: 3}
+  bee_speed: {x: 3, y: 3}
+  bee_speed_loss_given: {x: 1, y: 1}
