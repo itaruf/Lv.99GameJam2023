@@ -31,7 +31,7 @@ public static class PlayerHelper
         return pc;
     }
 
-    public static D_Player GetD_Player()
+    public static D_Player GetPlayerData()
     {
         return GetPlayerController().D_Player;
     }

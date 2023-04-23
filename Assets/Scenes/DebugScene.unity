@@ -296,6 +296,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 810679195, guid: 67b091cfe742e3041b1fe79cbe438813, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2931780303115392777, guid: 67b091cfe742e3041b1fe79cbe438813, type: 3}
       propertyPath: m_Name
       value: Player
@@ -353,78 +357,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1091114413}
     m_Modifications:
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.keys.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.keys.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.keys.Array.data[2]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.keys.Array.data[3]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[1].nbMax
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[2].nbMax
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[3].nbMax
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[1].entity
-      value: 
-      objectReference: {fileID: 11400000, guid: b7aa9be0d71f7d04eada5bbd7327f3e9, type: 2}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[2].entity
-      value: 
-      objectReference: {fileID: 11400000, guid: 719ac169d342ea741aa655ac1f32f8fe, type: 2}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[3].entity
-      value: 
-      objectReference: {fileID: 11400000, guid: d05f43ec3e0b8cc448a2bd9739eca988, type: 2}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].delayBeforeNextSpawn
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[1].delayBeforeNextSpawn
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[2].delayBeforeNextSpawn
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[3].delayBeforeNextSpawn
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[1].frequencyOfApparition
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[2].frequencyOfApparition
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[3].frequencyOfApparition
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 724131818, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 19.199999
@@ -819,38 +751,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1091114413}
     m_Modifications:
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.keys.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.keys.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.keys.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].nbMax
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].entity
-      value: 
-      objectReference: {fileID: 11400000, guid: 467b1d473f4a5404f8e05d8a8137e272, type: 2}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].delayBeforeNextSpawn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].frequencyOfApparition
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2797563917810888198, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1028,30 +928,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1091114413}
     m_Modifications:
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.keys.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].nbMax
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].entity
-      value: 
-      objectReference: {fileID: 11400000, guid: b7aa9be0d71f7d04eada5bbd7327f3e9, type: 2}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].delayBeforeNextSpawn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5292816337301857301, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
-      propertyPath: spawnables.values.Array.data[0].frequencyOfApparition
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 724131818, guid: ed8006f7f8798fb4c96e61335ab955a4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 19.199999

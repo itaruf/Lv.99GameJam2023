@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a6fa45668612354485c1a1d13ffdd97, type: 3}
-  m_Name: D_Camera
+  m_Script: {fileID: 11500000, guid: f9397d090044aa040968d079f15b3621, type: 3}
+  m_Name: D_WaterDrop
   m_EditorClassIdentifier: 
-  enable_camera_lag_speed: 1
-  camera_speed: {x: 1, y: 2}
-  camera_target: {fileID: 2931780303115392777, guid: 67b091cfe742e3041b1fe79cbe438813, type: 3}
-  camera_offset_from_target: {x: 0, y: 2}
+  entity: {fileID: 8718437357423770202, guid: 8fb766a963db56649a5c5a9ae105af8d, type: 3}
+  waterdrop_speed_loss_given: {x: 2, y: 2}

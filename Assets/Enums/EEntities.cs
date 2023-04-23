@@ -4,5 +4,11 @@ public enum EEntities
     Flower,
     Gale,
     Snowflake,
-    Collectable
+    Collectable,
+    WaterDrop,
+    Airplane,
+    Cloud_1,
+    Cloud_2,
+    Cloud_3,
+    Rose,
 }

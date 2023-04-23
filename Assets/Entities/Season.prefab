@@ -92,12 +92,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnables:
-    keys: 00000000
+    keys: 000000000400000003000000010000000200000005000000
     values:
     - entity: {fileID: 11400000, guid: b7aa9be0d71f7d04eada5bbd7327f3e9, type: 2}
       nbMax: 2
       frequencyOfApparition: 10
+      delayBeforeNextSpawn: 5
+      currentDelayTimer: 0
+    - entity: {fileID: 11400000, guid: b7aa9be0d71f7d04eada5bbd7327f3e9, type: 2}
+      nbMax: 2
+      frequencyOfApparition: 10
+      delayBeforeNextSpawn: 5
+      currentDelayTimer: 0
+    - entity: {fileID: 11400000, guid: 719ac169d342ea741aa655ac1f32f8fe, type: 2}
+      nbMax: 2
+      frequencyOfApparition: 10
+      delayBeforeNextSpawn: 5
+      currentDelayTimer: 0
+    - entity: {fileID: 11400000, guid: d05f43ec3e0b8cc448a2bd9739eca988, type: 2}
+      nbMax: 2
+      frequencyOfApparition: 10
+      delayBeforeNextSpawn: 5
+      currentDelayTimer: 0
+    - entity: {fileID: 11400000, guid: 467b1d473f4a5404f8e05d8a8137e272, type: 2}
+      nbMax: 2
+      frequencyOfApparition: 10
       delayBeforeNextSpawn: 2
+      currentDelayTimer: 0
+    - entity: {fileID: 11400000, guid: a0a3f84b8b613ba4aa13406ca9cfb3e3, type: 2}
+      nbMax: 2
+      frequencyOfApparition: 10
+      delayBeforeNextSpawn: 1
       currentDelayTimer: 0
   spawn_points: []
 --- !u!212 &4939868111664798419

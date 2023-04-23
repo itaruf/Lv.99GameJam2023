@@ -43,6 +43,8 @@ public class PlayerController : Controller
         {
             ModifySpeed(D_Player.player_max_speed, true);
         }
+
+        Debug.Log(speed);
     }
 
     void Start()
@@ -100,8 +102,8 @@ public class PlayerController : Controller
             y = newVector2.y;
         }
 
-        v.x = Mathf.Clamp(x, PlayerHelper.GetD_Player().player_min_speed.x, PlayerHelper.GetD_Player().player_max_speed.x);
-        v.y = Mathf.Clamp(y, PlayerHelper.GetD_Player().player_min_speed.y, PlayerHelper.GetD_Player().player_max_speed.y);
+        v.x = Mathf.Clamp(x, PlayerHelper.GetPlayerData().player_min_speed.x, PlayerHelper.GetPlayerData().player_max_speed.x);
+        v.y = Mathf.Clamp(y, PlayerHelper.GetPlayerData().player_min_speed.y, PlayerHelper.GetPlayerData().player_max_speed.y);
 
         speed = v;
 
