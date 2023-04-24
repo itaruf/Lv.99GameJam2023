@@ -17,4 +17,4 @@ MonoBehaviour:
   player_gravity_in_wind: 0
   player_gravity: 0
   player_min_speed: {x: 3, y: 3}
-  player_max_speed: {x: 6, y: 15}
+  player_max_speed: {x: 6, y: 10}
