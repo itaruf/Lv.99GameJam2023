@@ -40,14 +40,14 @@ public class BackgroundManager : MonoBehaviour
         }
     }
 
-    private void Update()
+   /* private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
             SeasonManager season_manager = ManagerHelper.GetSeasonManager();
             SetBackground(season_manager.GetNextSeasonIndex());
         }
-    }
+    }*/
 
     void SetBackground(int index)
     {

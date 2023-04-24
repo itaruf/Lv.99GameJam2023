@@ -33,7 +33,7 @@ public class PlayerController : Controller
 
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -44,7 +44,7 @@ public class PlayerController : Controller
         {
             ModifySpeed(D_Player.player_max_speed, true);
         }
-    }
+    }*/
 
     void Start()
     {
