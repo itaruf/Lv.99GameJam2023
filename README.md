@@ -97,7 +97,7 @@ contact. It is meant to be a chill experience and climb from season to season.</
   </ul>
   </li>
 
-  <li><h4>Spawner</h4>
+  <li><h4>Spawners</h4>
   <ul>
     <li>
       Pickable boosts and enemies are spawned dynamically all throughout the game. Their spawn position is calculated according to the player's current position and the space required to avoid spawns at the same location.
@@ -105,7 +105,7 @@ contact. It is meant to be a chill experience and climb from season to season.</
   </ul>
   </li>
       
-  <li><h4>Infinite climb</h4>
+  <li><h4>Infinite climbing</h4>
   <ul>
     <li>
       The player moves from season to season, cycling through winter, spring, summer and autumn. When they reach the top of the picture of a season, the season changes to the next season, and the player climbs again starting at the bottom of the picture.
